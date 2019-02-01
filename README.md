@@ -37,8 +37,7 @@ and leading facial landmark detectors.
 ## Core idea: learning from background patches
 
 we introduce a cascade
-framework for the task of facial landmark localization.
-Fig. 1 depicts the scheme of the proposed framework. In
+framework for the task of facial landmark localization in the following figure depicting the scheme of the proposed framework. In
 particular, our framework consists of a set of correlation filters
 with different spatial supports (sizes) which are hierarchically
 connected together in a cascade manner. The size
@@ -57,55 +56,59 @@ final landmark location is determined by averaging the locations
 estimated by all filters over the cascade framework.
 
 
- ![](http://www.hamedkiani.com/uploads/5/1/8/8/51882963/edited/bacf-2.png?1505151342)
+ ![](https://github.com/hamedkiani/correlation-filter-cascade-face-landmark-localization/blob/master/imgs/intro.png?raw=true)
 
 <br>
 
-## Evaluation result
+## Quantitative results
 
-#### (I) Success plots comparing BACF with the state-of-the-art HOG based trackers on (a) OTB50, (b) OTB100, and (c) TC128. The result of top 12 trackers is illustrated here. AUCs are reported in brackets.
+1) Accurate landmark detection over cascade levels. The ground truth and predicted locations are shown by blue dots and red
+squares, respectively. The images are selected from the LFPW testing set.
 
-![](http://www.hamedkiani.com/uploads/5/1/8/8/51882963/screen-shot-2017-09-11-at-1-40-00-pm_orig.png)
-
-<br><br>
-
-###  (II) Attribute based evaluation. Success plots compare BACF with state-of-the-art HOG based trackers on OTB100. BACF outperformed all the trackers over all attributes. AUCs are reported in brackets. The number of videos for each attribute is shown in parenthesis.
-
-![](http://www.hamedkiani.com/uploads/5/1/8/8/51882963/screen-shot-2017-09-11-at-1-50-35-pm_orig.png)
+![](https://github.com/hamedkiani/correlation-filter-cascade-face-landmark-localization/blob/master/imgs/img_1.png?raw=true)
 
 <br><br>
 
-### (III) Success rates (% at IoU > 0.50) of BACF compared to CF trackers with deep features
+2) Detection examples of the LPFW dataset. The first two rows show the successful detections under challenging circumstances of
+expression, occlusion, pose, lighting and poor quality. The third row shows some failed cases. The red and blue marks respectively show the detected landmark and the ground truth.
 
-![](http://www.hamedkiani.com/uploads/5/1/8/8/51882963/screen-shot-2017-09-11-at-1-45-41-pm_orig.png)
-
-<br><br>
-
-### (IV) Tracking demo on OTB-100 dataset
-
-[![](http://img.youtube.com/vi/aertxlzMEPo/0.jpg)](http://www.youtube.com/watch?v=aertxlzMEPo "")
-
+![](https://github.com/hamedkiani/correlation-filter-cascade-face-landmark-localization/blob/master/imgs/img_2.png?raw=true)
 
 <br><br>
 
-### (V) Tracking result (MAT files) for OTB-50 and OTB-100​
+3) Detection examples of the BioID dataset. The red squares and blue dots represent the detected and ground truth landmarks, respectively.
 
-### http://www.hamedkiani.com/bacf.html
+![](https://github.com/hamedkiani/correlation-filter-cascade-face-landmark-localization/blob/master/imgs/img_3.png?raw=true)
 
-<br>
 
 ## Running instructions
 
-coming soon!
+The code for training and testing cascade level of correlation filters (multi channel correlation filters) are provided above. You can define different levels with different size, and different features for different landmarks.
+
+The mat files for BioID are provided, run train_test_BioID.m in MATLAB and you see the evaluation results.
+
 
 ## Reference
 
+http://www.hamedkiani.com/uploads/5/1/8/8/51882963/cascade_cf_camera_ready_submitted.pdf
+
 ```
-@inproceedings{kiani2017learning,
-  title={Learning background-aware correlation filters for visual tracking},
-  author={Kiani Galoogahi, Hamed and Fagg, Ashton and Lucey, Simon},
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages={1135--1143},
-  year={2017}
+@inproceedings{galoogahi2016correlation,
+  title={Correlation filter cascade for facial landmark localization},
+  author={Galoogahi, Hamed Kiani and Sim, Terence},
+  booktitle={Applications of Computer Vision (WACV), 2016 IEEE Winter Conference on},
+  pages={1--8},
+  year={2016},
+  organization={IEEE}
+}
+```
+
+```
+@inproceedings{kiani2013multi,
+  title={Multi-channel correlation filters},
+  author={Kiani Galoogahi, Hamed and Sim, Terence and Lucey, Simon},
+  booktitle={Proceedings of the IEEE international conference on computer vision},
+  pages={3072--3079},
+  year={2013}
 }
 ```
